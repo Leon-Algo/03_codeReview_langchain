@@ -80,16 +80,16 @@ streamlit run web_app.py
 
 ```
 .
-├── app.py                  # 主应用程序
-├── cli.py                  # 命令行界面
-├── web_app.py              # Web界面
+├── app.py                  # 主应用程序，提供完整的顺序Chain
+├── cli.py                  # 命令行界面，支持灵活选择执行步骤
+├── web_app.py              # 基于Streamlit的Web界面，提供友好的用户交互
 ├── chains/                 # LangChain组件
-│   ├── __init__.py
-│   ├── code_generation_chain.py
-│   ├── code_review_chain.py
-│   ├── code_improvement_chain.py
-│   ├── test_case_generation_chain.py
-│   └── unit_test_generation_chain.py
+│   ├── __init__.py      # 初始化文件
+│   ├── code_generation_chain.py # 代码生成链，根据业务需求生成代码
+│   ├── code_review_chain.py    # 代码评审链，对生成的代码进行评审
+│   ├── code_improvement_chain.py # 代码改进链，根据评审结果优化代码
+│   ├── test_case_generation_chain.py # 测试用例生成链，根据业务需求生成测试用例
+│   └── unit_test_generation_chain.py # 单元测试生成链，根据生成的代码生成单元测试
 ├── requirements.txt        # 项目依赖
 └── README.md               # 项目说明
 ```
@@ -162,6 +162,29 @@ def parse_csv_and_analyze(file_path, column_name):
     except FileNotFoundError:
         raise FileNotFoundError(f"文件 '{file_path}' 不存在")
 ```
+### 生成的streamlit界面示例(wab_app.py)
+(可以根据业务需求生成高质量代码、代码评审、测试用例和单元测试)
+> 输入示例：创建一个函数，用于解析CSV文件并提取特定列的数据，然后计算这些数据的平均值、最大值和最小值。
+
+1、生成的代码
+![img](https://img2023.cnblogs.com/blog/2045416/202502/2045416-20250225211740919-681170428.png)
+2、代码评审
+![img](https://img2023.cnblogs.com/blog/2045416/202502/2045416-20250225211749541-2094958949.png)
+![img](https://img2023.cnblogs.com/blog/2045416/202502/2045416-20250225211759707-104915593.png)
+3、改进后的完整代码
+![img](https://img2023.cnblogs.com/blog/2045416/202502/2045416-20250225211805963-1397938787.png)
+4、测试用例
+![img](https://img2023.cnblogs.com/blog/2045416/202502/2045416-20250225211814591-1998597089.png)
+5、单元测试
+![img](https://img2023.cnblogs.com/blog/2045416/202502/2045416-20250225211821084-460508865.png)
+
+## 后续改进方向
+
+1. 支持更多编程语言
+2. 添加代码质量度量指标
+3. 优化prompt模板，提高生成质量
+4. 加入并行处理，提高效率
+5. 支持更多测试框架
 
 ## 贡献
 
